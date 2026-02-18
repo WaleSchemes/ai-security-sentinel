@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Activity, Cpu, Brain, Shield, Zap,
     AlertTriangle, CheckCircle, XCircle,
-    Play, RotateCcw, Server, Network
+    Network
 } from 'lucide-react';
 import { useDemoStore } from '../store/demoStore';
 import { ThreatType } from '../types';
@@ -47,7 +47,6 @@ export const AIAnalysisFlow: React.FC = () => {
         analysisSteps,
         aiVisualization,
         triggerThreat,
-        resetDemo
     } = useDemoStore();
 
     const [showNeurons, setShowNeurons] = useState(false);
@@ -172,12 +171,12 @@ export const AIAnalysisFlow: React.FC = () => {
                                         >
                                             <motion.div
                                                 className={`flex flex-col items-center p-4 rounded-lg ${step.status === 'processing'
-                                                        ? 'bg-ai-purple/20 border-2 border-ai-purple'
-                                                        : step.status === 'complete'
-                                                            ? 'bg-safe-green/20 border-2 border-safe-green'
-                                                            : step.status === 'warning'
-                                                                ? 'bg-threat-red/20 border-2 border-threat-red'
-                                                                : 'bg-gray-700/50 border border-gray-600'
+                                                    ? 'bg-ai-purple/20 border-2 border-ai-purple'
+                                                    : step.status === 'complete'
+                                                        ? 'bg-safe-green/20 border-2 border-safe-green'
+                                                        : step.status === 'warning'
+                                                            ? 'bg-threat-red/20 border-2 border-threat-red'
+                                                            : 'bg-gray-700/50 border border-gray-600'
                                                     }`}
                                                 animate={{
                                                     scale: step.status === 'processing' ? [1, 1.05, 1] : 1,
@@ -188,9 +187,9 @@ export const AIAnalysisFlow: React.FC = () => {
                                                 }}
                                             >
                                                 <div className={`p-3 rounded-full mb-3 ${step.status === 'complete' ? 'bg-safe-green' :
-                                                        step.status === 'warning' ? 'bg-threat-red' :
-                                                            step.status === 'processing' ? 'bg-ai-purple' :
-                                                                'bg-gray-600'
+                                                    step.status === 'warning' ? 'bg-threat-red' :
+                                                        step.status === 'processing' ? 'bg-ai-purple' :
+                                                            'bg-gray-600'
                                                     }`}>
                                                     <Icon className="w-6 h-6" />
                                                 </div>
@@ -269,7 +268,7 @@ export const AIAnalysisFlow: React.FC = () => {
                                 {[0, 1, 2, 3].map((layer, layerIndex) => (
                                     <g key={layer}>
                                         {/* Neurons */}
-                                        {[0, 1, 2, 3].map((neuron, neuronIndex) => {
+                                        {[0, 1, 2, 3].map((_neuron, neuronIndex) => {
                                             const x = 50 + layerIndex * 150;
                                             const y = 50 + neuronIndex * 40;
                                             const activation = aiVisualization.activations[layerIndex] || 0.5;
@@ -410,10 +409,10 @@ export const AIAnalysisFlow: React.FC = () => {
                                         exit={{ opacity: 0, x: 20 }}
                                         transition={{ delay: index * 0.1 }}
                                         className={`p-3 rounded-lg border ${event.result === 'blocked'
-                                                ? 'border-threat-red/30 bg-threat-red/10'
-                                                : event.result === 'flagged'
-                                                    ? 'border-yellow-500/30 bg-yellow-500/10'
-                                                    : 'border-safe-green/30 bg-safe-green/10'
+                                            ? 'border-threat-red/30 bg-threat-red/10'
+                                            : event.result === 'flagged'
+                                                ? 'border-yellow-500/30 bg-yellow-500/10'
+                                                : 'border-safe-green/30 bg-safe-green/10'
                                             }`}
                                     >
                                         <div className="flex items-center justify-between mb-2">

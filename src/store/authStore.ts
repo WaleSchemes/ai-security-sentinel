@@ -18,7 +18,7 @@ export const useAuthStore = create<AuthState>()(
             user: null,
             users: [], // will be populated from localStorage on init
 
-            login: (username, password) => {
+            login: (username, _password) => {
                 const { users } = get();
                 // In real app, you'd verify password. Here we just check username exists
                 const existingUser = users.find(u => u.username === username);
@@ -29,7 +29,7 @@ export const useAuthStore = create<AuthState>()(
                 return false;
             },
 
-            signup: (username, password) => {
+            signup: (username, _password) => {
                 const { users } = get();
                 if (users.find(u => u.username === username)) return false;
 

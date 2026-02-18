@@ -2,7 +2,7 @@ import { ThreatType, DetectionEvent } from '../types';
 import { useDemoStore } from '../store/demoStore';
 
 class MockWebSocketService {
-    private interval: NodeJS.Timeout | null = null;
+    private interval: ReturnType<typeof setInterval> | null = null;
     private isConnected = false;
 
     connect() {

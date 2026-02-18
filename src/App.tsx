@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { AIAnalysisFlow } from './components/AIAnalysisFlow';
 import { Auth } from './components/Auth';
 import { PerformanceMetrics } from './components/PerformanceMetrics';
